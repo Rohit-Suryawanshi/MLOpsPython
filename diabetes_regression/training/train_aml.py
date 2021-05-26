@@ -141,7 +141,7 @@ def main():
 
     # Link dataset to the step run so it is trackable in the UI
     run.input_datasets['training_data'] = dataset
-    run.parent.tag("dataset_id", value=dataset.id)
+    run.parent.tag("dataset_id", value=dataset.name)
 
     # Split the data into test/train
     df = dataset.to_pandas_dataframe()
