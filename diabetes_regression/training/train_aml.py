@@ -143,6 +143,8 @@ def main():
     run.input_datasets['training_data'] = dataset
     run.parent.tag("dataset_id", value=dataset.id)
     run.tag("dataset_id", value=dataset.id)
+    print("Run_get_tags", run.tag)
+    print("Run_get_tags", run.get_tags())
     print("Parent_tags", run.parent.tag)
     print("Parent_get_tags", run.parent.get_tags())
 
