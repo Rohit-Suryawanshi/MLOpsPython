@@ -70,7 +70,7 @@ run = Run.get_context()
 # if you would like to use Offline mode
 exp = run.experiment
 ws = run.experiment.workspace
-run_id = 'amlcompute'
+run_id = run.id
 
 parser = argparse.ArgumentParser("evaluate")
 
@@ -95,9 +95,9 @@ parser.add_argument(
 
 args = parser.parse_args()
 if (args.run_id is not None):
-    run_id = args.run_id
+        run_id = run.parent.id
 if (run_id == 'amlcompute'):
-    run_id = run.parent.id
+        run_id = args.run_id
 model_name = args.model_name
 metric_eval = "mse"
 
