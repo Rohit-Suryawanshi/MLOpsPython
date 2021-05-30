@@ -161,7 +161,6 @@ def main():
         run.log(k, v)
         run.parent.log(k, v)
         print(f"{k}: {v}")
-    
     print("Parent_get_metric:", run.parent.get_metrics().get("mse")
 
     # Pass model file to next step
