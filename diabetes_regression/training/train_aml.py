@@ -160,7 +160,7 @@ def main():
     os.makedirs(step_output_path, exist_ok=True)
     model_output_path = os.path.join(step_output_path, model_name)
     joblib.dump(value=model, filename=model_output_path)
-    print("Parent_get_metric:", run.parent.get_metrics().get("mse")
+    print("Parent_get_metric:", run.parent.get_metrics().get("mse"))
 
     # Also upload model file to run outputs for history
     os.makedirs('outputs', exist_ok=True)
