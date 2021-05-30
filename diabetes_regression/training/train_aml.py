@@ -142,11 +142,6 @@ def main():
     # Link dataset to the step run so it is trackable in the UI
     run.input_datasets['training_data'] = dataset
     run.parent.tag("dataset_id", value=dataset.id)
-    run.tag("dataset_id", value=dataset.id)
-    print("Run_get_tags", run.tag)
-    print("Run_get_tags", run.get_tags())
-    print("Parent_tags", run.parent.tag)
-    print("Parent_get_tags", run.parent.get_tags())
 
     # Split the data into test/train
     df = dataset.to_pandas_dataframe()
@@ -160,13 +155,12 @@ def main():
     for (k, v) in metrics.items():
         run.log(k, v)
         run.parent.log(k, v)
-        print(f"{k}: {v}")
-    print("Parent_get_metric:", run.parent.get_metrics().get("mse")
 
     # Pass model file to next step
     os.makedirs(step_output_path, exist_ok=True)
     model_output_path = os.path.join(step_output_path, model_name)
     joblib.dump(value=model, filename=model_output_path)
+    print("Parent_get_metric:", run.parent.get_metrics().get("mse")
 
     # Also upload model file to run outputs for history
     os.makedirs('outputs', exist_ok=True)
