@@ -56,7 +56,7 @@ def main():
     else:
         ws = run.experiment.workspace
         exp = run.experiment
-        run_id = 'amlcompute'
+        run_id = run.id
 
     parser = argparse.ArgumentParser("register")
 
@@ -81,9 +81,9 @@ def main():
 
     args = parser.parse_args()
     if (args.run_id is not None):
-        run_id = args.run_id
-    if (run_id == 'amlcompute'):
         run_id = run.parent.id
+    if (run_id == 'amlcompute'):
+        run_id = args.run_id
     model_name = args.model_name
     model_path = args.step_input
 
